@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Canvas</title>
+	</head>
+	<body>
+		<canvas id="meu_canvas" width="1000" height="1000"></canvas>
+		<script>
+			// referenciando o canvas
+			var canvas = document.getElementById("meu_canvas");
+			// Obtendo contexto gráfico
+			var contexto = canvas.getContext("2d");
+
+			// Dados da bola
+			var x = 20;
+			var y = 100;
+			var raio = 5;
+			var volta = false;
+
+			// Iniciar animação
+			requestAnimationFrame(mexerBola);
+
+			function mexerBola() {
+				// Limpando o canvas
+				contexto.clearRect(0, 0, canvas.width, canvas.height);
+
+				// Desenhando a bola
+				contexto.beginPath();
+				contexto.arc(x, y, raio, 0, Math.PI*2);
+				contexto.fill();
+
+				// Deslocar 20 pixels para a direita
+
+				if(!volta) {
+					x += 20;
+				}
+				else{
+					x -= 20;
+				}
+
+				if(x == 900) volta = true;
+				if(x == 20) volta = false;
+				// Chamar o proximo ciclo da animação
+				requestAnimationFrame(mexerBola);
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<title>Canvas</title>
+	</head>
+	<body>
+		<canvas id="meu_canvas" width="1000" height="1000"></canvas>
+		<script>
+			// referenciando o canvas
+			var canvas = document.getElementById("meu_canvas");
+			// Obtendo contexto gráfico
+			var contexto = canvas.getContext("2d");
+
+			// Dados da bola
+			var x = 20;
+			var y = 100;
+			var raio = 5;
+			var volta = false;
+
+			// Definindo o instante anterior
+			var anterior = new Date().getTime();
+
+			// Iniciar animação
+			requestAnimationFrame(mexerBola);
+
+			// Função de animação
+			function mexerBola() {
+
+				// Obtendo o instante atual
+				var agora = new Date().getTime();
+
+				// Tempo decorrido = diferença
+				var decorrido = agora-anterior
+
+				// Limpando o canvas
+				contexto.clearRect(0, 0, canvas.width, canvas.height);
+
+				// Desenhando a bola
+				contexto.beginPath();
+				contexto.arc(x, y, raio, 0, Math.PI*2);
+				contexto.fill();
+
+
+				// Desloca tantos pixels por segundo
+				var velocidade = 500; // Em pixels
+
+				// move parar a direita
+				if(!volta) {
+					x += (velocidade * decorrido) / 1000;
+				}
+				// move para a esquerda
+				else{
+					x -= (velocidade * decorrido) / 1000;
+				}
+
+				// se atingir o fim da telado canvas
+				if(x >= 990) volta = true;
+				// se voltar ao começo do canvas
+				if(x <= 20) volta = false;
+
+				// Guarda o momento anterior
+				anterior = agora;
+				// Chamar o proximo ciclo da animação
+				requestAnimationFrame(mexerBola);
+			}
+
+
+		</script>
+	</body>
+</html>
