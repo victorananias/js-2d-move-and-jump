@@ -59,5 +59,20 @@ Bola.prototype = {
 
     // Voltando as configurações anteriores
     contexto.restore();
+  },
+  retangulosColisao: function() {
+    // Objeto com informações da 'hitbox'
+    // Cria um quadrado ao redor da bola
+    return [
+      {
+        x: this.x - this.raio, // this.x é o centro da bola
+        y: this.y - this.raio,  // this.y idem
+        largura: this.raio * 2,
+        altura: this.raio * 2,
+      }
+    ]
+  },
+  colidiuCom: function (sprite) {
+    alert("PÁ");
   }
 }
