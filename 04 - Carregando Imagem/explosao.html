@@ -7,20 +7,20 @@
 		<canvas id="meu_canvas" width="1000" height="1000"></canvas>
 		<script>
 			// referenciando o canvas
-			var canvas = document.getElementById("meu_canvas");
+			let canvas = document.getElementById("meu_canvas");
 
 			// Obtendo contexto gráfico
-			var contexto = canvas.getContext("2d");
+			let contexto = canvas.getContext("2d");
 
 
 			// Criando objeto Imagem
-			var imagem = new Image();
+			let imagem = new Image();
 
 			// Atribuindo caminho do arquivo
 			imagem.src = "img/explosao.png";
 
 			// Obtendo uma imagem da página
-			// var imagem = document.getElementById("imagem");
+			// let imagem = document.getElementById("imagem");
 
 
 			// Após a imagem ser carregada

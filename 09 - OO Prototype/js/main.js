@@ -1,7 +1,7 @@
 window.onload = function() {
   // Instanciando
-  var meuCarro = new Carro('Vermelho',250);
-  var oponente = new Carro('Azul',300);
+  let meuCarro = new Carro('Vermelho',250);
+  let oponente = new Carro('Azul',300);
 
   // chamando método
   meuCarro.acelerar();

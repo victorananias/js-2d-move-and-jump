@@ -26,15 +26,15 @@ Animacao.prototype = {
     // esse 'for' percorre somente os elementos definidos do array,
     // utilizando a propriedade length o 'for' irá percorrer todas as posições
     // Atualizando o estado dos Sprites
-    for (var i in this.sprites)
+    for (let i in this.sprites)
       this.sprites[i].atualizar();
 
     // Desenhando os Sprites
-    for(var i in this.sprites)
+    for(let i in this.sprites)
     this.sprites[i].desenhar();
 
     // referenciando o objeto
-    var animacao = this;
+    let animacao = this;
 
     // Chamando o proximo ciclo
     requestAnimationFrame(function() {
@@ -44,8 +44,8 @@ Animacao.prototype = {
 
   },
   limparTela: function() {
-    // atribuido o context a uma variavel
-    var contexto = this.contexto;
+    // atribuido o context a uma letiavel
+    let contexto = this.contexto;
 
     // clearRect remove desenhos do canvas
     let x             = 0; // inicio - largura

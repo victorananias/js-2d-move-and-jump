@@ -7,16 +7,16 @@
 		<canvas id="meu_canvas" width="1000" height="1000"></canvas>
 		<script>
 			// referenciando o canvas
-			var canvas = document.getElementById("meu_canvas");
+			let canvas = document.getElementById("meu_canvas");
 
 			// Obtendo contexto gráfico
-			var contexto = canvas.getContext("2d");
+			let contexto = canvas.getContext("2d");
 
 			// Um quadrado preto
 			contexto.fillStyle = "black";
 			contexto.fillRect(100, 100, 50, 50);
 
-			// Salvar a configuração
+			// Sallet a configuração
 			contexto.save();
 
 			// Agora um quadrado roxo

@@ -1,6 +1,6 @@
-var SETA_ESQUERDA = 37;
-var SETA_DIREITA = 39;
-var ESPACO = 32;
+let SETA_ESQUERDA = 37;
+let SETA_DIREITA = 39;
+let ESPACO = 32;
 
 
 function Teclado(elemento) {

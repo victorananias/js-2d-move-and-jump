@@ -34,7 +34,7 @@ Animacao.prototype = {
       this.sprites[i].desenhar();
 
     // referenciando o objeto
-    var animacao = this;
+    let animacao = this;
 
     // Chamando o proximo ciclo
     requestAnimationFrame(function() {
@@ -44,8 +44,8 @@ Animacao.prototype = {
 
   },
   limparTela: function() {
-    // atribuido o context a uma variavel
-    var contexto = this.contexto;
+    // atribuido o context a uma letiavel
+    let contexto = this.contexto;
 
     // clearRect remove desenhos do canvas
     let x             = 0; // inicio - largura
