@@ -13,12 +13,13 @@ function Tiro(contexto, nave) {
 Tiro.prototype = {
   atualizar: function() {
     this.y -= this.velocidade;
+      console.log(this);
 
     // se o tiro passar do começo da tela será excluido
-    if(this.y < -this.altura) {
-      this.animacao.excluirSprite(this);
-      this.colisor.excluirSprite(this);
-    }
+    // if(this.y < -this.altura) {
+    //   this.animacao.excluirSprite(this);
+    //   this.colisor.excluirSprite(this);
+    // }
   },
 
   desenhar: function() {

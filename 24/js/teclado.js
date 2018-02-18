@@ -1,7 +1,14 @@
-let SETA_ESQUERDA = 37;
-let SETA_DIREITA = 39;
-let SETA_ACIMA = 38;
-let SETA_ABAIXO = 40;
+// SETAS
+// let SETA_ESQUERDA = 37;
+// let SETA_DIREITA = 39;
+// let SETA_ACIMA = 38;
+// let SETA_ABAIXO = 40;
+
+// W A S D
+let SETA_ESQUERDA = 65;
+let SETA_DIREITA = 68;
+let SETA_ACIMA = 87;
+let SETA_ABAIXO = 83;
 let ESPACO = 32;
 
 
@@ -23,6 +30,7 @@ function Teclado(elemento) {
 
   // Define a tecla pressionada como true
   elemento.addEventListener("keydown", function(evento) {
+      console.log(evento.keyCode);
     let tecla = evento.keyCode; // Tornando mais legível
     teclado.pressionadas[tecla] = true;
 
