@@ -5,11 +5,12 @@
 // let SETA_ABAIXO = 40;
 
 // W A S D
-let SETA_ESQUERDA = 65;
-let SETA_DIREITA = 68;
-let SETA_ACIMA = 87;
-let SETA_ABAIXO = 83;
-let ESPACO = 32;
+var SETA_ESQUERDA = 65;
+var SETA_DIREITA = 68;
+var SETA_ACIMA = 87;
+var SETA_ABAIXO = 83;
+var ESPACO = 32;
+var SHIFT = 16;
 
 
 function Teclado(elemento) {

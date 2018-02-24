@@ -27,7 +27,7 @@ Nave.prototype = {
   },
 
   atirar: function() {
-    let tiro = new Tiro(this.contexto, this);
+    let tiro = new Tiro(this.contexto, this.teclado, this);
     this.animacao.novoSprite(tiro);
     this.colisor.novoSprite(tiro);
   },
@@ -52,7 +52,7 @@ Nave.prototype = {
 
       this.contexto.restore();
     }
-    
+
     return retangulos;
   },
 
