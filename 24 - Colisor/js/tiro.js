@@ -2,7 +2,7 @@ function Tiro(contexto, teclado, nave) {
   this.contexto = contexto;
   this.nave = nave;
   this.teclado = teclado;
-  
+
   this.cor = "red";
   this.largura = 4;
   this.altura = 20;
@@ -63,17 +63,12 @@ Tiro.prototype = {
     let contexto = this.contexto;
 
     contexto.save();
-    contexto.
-    fillStyle = this.cor;
+    contexto.fillStyle = this.cor;
     contexto.fillRect(this.x, this.y, this.largura, this.altura);
     contexto.restore();
   },
 
   retangulosColisao: function() {
     return [{x: this.x, y: this.y, largura: this.largura, altura: this.altura}];
-  },
-
-  colidiuCom: function(outro) {
-
   }
 }

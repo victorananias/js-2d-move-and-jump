@@ -42,8 +42,9 @@ Animacao.prototype = {
       this.sprites[i].desenhar();
 
     // Processamentos gerais
-    for(let i in this.processamentos)
-      this.processamentos[i].processar();
+    for(let i in this.processamentos) {
+        this.processamentos[i].processar();
+    }
 
     // Processamento de exclusões
     this.processarExclusoes();

@@ -1,6 +1,5 @@
 function Colisor() {
   this.sprites = [];
-  this.aoColidir = null;
 }
 
 Colisor.prototype = {
@@ -57,9 +56,6 @@ Colisor.prototype = {
           // Se houver colisão irá notificar
           sprite1.colidiuCom(sprite2);
           sprite2.colidiuCom(sprite1);
-
-          // Para assim que houver colisão
-          if (this.aoColidir) this.aoColidir(sprite1, sprite2);
 
           break colisoes;
         }

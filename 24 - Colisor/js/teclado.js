@@ -31,7 +31,6 @@ function Teclado(elemento) {
 
   // Define a tecla pressionada como true
   elemento.addEventListener("keydown", function(evento) {
-      console.log(evento.keyCode);
     let tecla = evento.keyCode; // Tornando mais legível
     teclado.pressionadas[tecla] = true;
 

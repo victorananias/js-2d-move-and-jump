@@ -5,6 +5,7 @@ function Nave(contexto, teclado, imagem) {
   this.x = 0;
   this.y = 0;
   this.velocidade = 0;
+  this.vidas = 3;
 }
 
 Nave.prototype = {
@@ -40,23 +41,47 @@ Nave.prototype = {
       {x: this.x + 25, y: this.y + 19, largura: 9,  altura: 13}
     ];
 
-    for(let i in retangulos) {
-      this.contexto.save();
-      this.contexto.strokeStyle = "yellow";
-      this.contexto.strokeRect(
-          retangulos[i].x,
-          retangulos[i].y,
-          retangulos[i].largura,
-          retangulos[i].altura
-      );
-
-      this.contexto.restore();
-    }
+    // Mostrando a hitbox
+    // for(let i in retangulos) {
+    //   this.contexto.save();
+    //   this.contexto.strokeStyle = "yellow";
+    //   this.contexto.strokeRect(
+    //       retangulos[i].x,
+    //       retangulos[i].y,
+    //       retangulos[i].largura,
+    //       retangulos[i].altura
+    //   );
+    //
+    //   this.contexto.restore();
+    // }
 
     return retangulos;
   },
-
+  morrer: function() {
+      this.vidas--;
+  },
+  destruirInimigo: function(inimigo) {
+      this.animacao.excluirSprite(inimigo);
+      this.colisor.excluirSprite(inimigo);
+  },
   colidiuCom: function(outro) {
+      if(outro instanceof Ovni) {
+          
+          this.morrer();
+          this.destruirInimigo();
 
+          if(this.vidas < 0 ) {
+              this.animacao.desligar();
+              alert("SE FODEU");
+          }
+          else {
+              this.recomecar();
+          }
+      }
+  },
+  recomecar: function() {
+      this.x = this.contexto.canvas.width / 2 - 18;
+      this.y = this.contexto.canvas.height - 48;
   }
+
 }

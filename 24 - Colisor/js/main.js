@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     teclado.disparou(ESPACO, function() {
       nave.atirar();
     });
-    
+
     animacao.novoProcessamento(colisor);
 
     colisor.novoSprite(nave);
