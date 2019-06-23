@@ -37,7 +37,7 @@ window.onload = () => {
 
   actions[ARROW_RIGHT] = () => {
     if (x + speed > canvas.width) return
-    
+
     // currentRow = 1
     // currentColumn = 0
 
@@ -102,7 +102,7 @@ window.onload = () => {
       isMoving = true
       direction = DIRECTION_RIGHT
 
-      if (x + speed >= canvas.width) return
+      if (x + spriteWidth + speed >= canvas.width) return
       nextFrame()
 
       x += speed
@@ -117,7 +117,7 @@ window.onload = () => {
 
       isMoving = true
       direction = DIRECTION_LEFT
-      
+
       if (x - speed < 0) return
       nextFrame()
 
@@ -138,7 +138,6 @@ window.onload = () => {
   }
 
   function clearContext(context) {
-    console.log('clear')
     const x = 0
     const y = 0
     const canvasWidth = context.canvas.width
