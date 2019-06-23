@@ -14,7 +14,7 @@ function Sonic(contexto, teclado, imagem) {
   this.andando = false;
   this.direcao = SONIC_DIREITA;
 
-  this.velocidade = 10;
+  this.velocidade = 1;
 }
 
 Sonic.prototype = {
@@ -26,14 +26,11 @@ Sonic.prototype = {
         this.spritesheet.linha = 1;
         this.spritesheet.coluna = 0;
 
-        // Configurando o estado atual
-        this.spritesheet.proximoQuadro();
-
-        // Deslocando o Sonic
-        this.x += this.velocidade;
       }
-      this.direcao = SONIC_DIREITA;
-      this.x += 10;
+      this.andando = true;
+      this.direcao = SONIC_DIREITA
+      this.spritesheet.proximoQuadro();
+      this.x += this.velocidade;
     }
 
     else if(this.teclado.pressionada(SETA_ESQUERDA)) {
