@@ -4,9 +4,9 @@ const ARROW_LEFT = 37
 const DIRECTION_RIGHT = 1
 const DIRECTION_LEFT = 2
 
-let direction = DIRECTION_RIGHT
+let currentDirection = DIRECTION_RIGHT
 
-const spriteSrc = 'img/spritesheet.png'
+const spriteSrc = 'img/sonic.png'
 const interval = 60
 
 const imgRowsCount = 3
@@ -25,7 +25,7 @@ let pressedKeys = []
 let currentColumn = 0
 let currentRow = 0
 
-let isMoving = false
+let isMoving = true
 
 let lastFrameChange = new Date().getTime()
 
@@ -34,32 +34,6 @@ const speed = 5
 window.onload = () => {
   const canvas = document.getElementById('canvas')
   const context = canvas.getContext('2d')
-
-  actions[ARROW_RIGHT] = () => {
-    if (x + speed > canvas.width) return
-
-    // currentRow = 1
-    // currentColumn = 0
-
-    // nextFrame()
-
-    // x += speed
-  }
-
-  actions[ARROW_LEFT] = () => {
-    console.log(x - speed);
-    if (x - speed < 0) {
-      return
-    }
-    // console.log('menor');
-
-    // currentRow = 2
-    // currentColumn = 0
-
-    // nextFrame()
-
-    // x -= speed
-  }
 
   const image = new Image()
   image.src = spriteSrc
@@ -94,45 +68,32 @@ window.onload = () => {
 
   function updatePosition() {
     if (triggeredKeys[ARROW_RIGHT]) {
-      if (!isMoving || direction != DIRECTION_RIGHT) {
-        currentRow = 1
-        currentColumn = 0
-      }
-
-      isMoving = true
-      direction = DIRECTION_RIGHT
-
-      if (x + spriteWidth + speed >= canvas.width) return
-      nextFrame()
-
-      x += speed
-      return
+      return actions[ARROW_RIGHT]()
     }
 
     if (triggeredKeys[ARROW_LEFT]) {
-      if (!isMoving || direction != DIRECTION_LEFT) {
-        currentRow = 2
-        currentColumn = 0
-      }
-
-      isMoving = true
-      direction = DIRECTION_LEFT
-
-      if (x - speed < 0) return
-      nextFrame()
-
-      x -= speed
-      return
+      return actions[ARROW_LEFT]()
     }
 
-    currentRow = 0
-    isMoving = false
+    isMoving = true
 
-    if (direction == DIRECTION_RIGHT) {
+    // if (currentDirection == DIRECTION_RIGHT) {
+    //   currentRow = 0
+    //   currentColumn = 0
+    // }
+
+    // if (currentDirection == DIRECTION_LEFT) {
+    //   currentRow = 1
+    //   currentColumn = 0
+    // }
+
+    currentRow = 0
+
+    if (currentDirection == DIRECTION_RIGHT) {
       currentColumn = 0
     }
 
-    if (direction == DIRECTION_LEFT) {
+    if (currentDirection == DIRECTION_LEFT) {
       currentColumn = 1
     }
   }
@@ -161,6 +122,37 @@ window.onload = () => {
       spriteWidth,
       spriteHeight
     )
+  }
+
+  actions[ARROW_RIGHT] = () => {
+    if (isMoving || currentDirection != DIRECTION_RIGHT) {
+      console.log('if')
+      currentRow = 1
+      currentColumn = 0
+    }
+
+    isMoving = false
+    currentDirection = DIRECTION_RIGHT
+
+    if (x + spriteWidth + speed >= canvas.width) return
+    nextFrame()
+
+    x += speed
+  }
+
+  actions[ARROW_LEFT] = () => {
+    if (isMoving || currentDirection != DIRECTION_LEFT) {
+      currentRow = 2
+      currentColumn = 0
+    }
+
+    isMoving = false
+    currentDirection = DIRECTION_LEFT
+
+    if (x - speed < 0) return
+    nextFrame()
+
+    x -= speed
   }
 }
 
