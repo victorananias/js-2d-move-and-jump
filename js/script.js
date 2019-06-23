@@ -58,6 +58,8 @@ window.onload = () => {
       return
     }
 
+    lastFrameChange = now
+
     currentColumn++
 
     if (currentColumn === imgColumnsCount) {
