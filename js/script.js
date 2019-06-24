@@ -5,6 +5,8 @@ const SPACE = 32
 const DIRECTION_RIGHT = 1
 const DIRECTION_LEFT = 2
 
+const keyboard = new Keyboard
+
 let currentDirection = DIRECTION_RIGHT
 
 const spriteSrc = 'img/adventurer.png'
@@ -25,10 +27,6 @@ const imgRowsCount = sprites.length
 
 let spriteWidth
 let spriteHeight
-
-let actions = []
-let triggeredKeys = []
-let pressedKeys = []
 
 let currentFrame = 0
 let currentRow = 0
@@ -103,12 +101,12 @@ window.onload = () => {
 
     const jumping = adventurer.jumping;
 
-    if (triggeredKeys[ARROW_RIGHT]) {
-      return actions[ARROW_RIGHT]()
+    if (keyboard.triggeredKeys[ARROW_RIGHT]) {
+      return keyboard.actions[ARROW_RIGHT]()
     }
 
-    if (triggeredKeys[ARROW_LEFT]) {
-      return actions[ARROW_LEFT]()
+    if (keyboard.triggeredKeys[ARROW_LEFT]) {
+      return keyboard.actions[ARROW_LEFT]()
     }
 
     if (!jumping && currentDirection == DIRECTION_RIGHT) {
@@ -156,7 +154,7 @@ window.onload = () => {
     context.stroke()
   }
 
-  actions[ARROW_RIGHT] = () => {
+  keyboard.actions[ARROW_RIGHT] = () => {
     currentDirection = DIRECTION_RIGHT
 
     if (currentRow != 2) {
@@ -172,7 +170,7 @@ window.onload = () => {
     }
   }
 
-  actions[ARROW_LEFT] = () => {
+  keyboard.actions[ARROW_LEFT] = () => {
     currentDirection = DIRECTION_LEFT
     currentRow = 3
 
@@ -189,7 +187,7 @@ window.onload = () => {
     }
   }
 
-  actions[SPACE] = () => {
+  keyboard.actions[SPACE] = () => {
     if (!adventurer.jumping) {
       adventurer.velocityY -= 30
       adventurer.jumping = true
@@ -197,21 +195,20 @@ window.onload = () => {
   }
 }
 
-document.addEventListener('keydown', onKeydown)
-document.addEventListener('keyup', onKeyup)
+document.addEventListener('keydown', () => keyboard.onKeydown())
+document.addEventListener('keyup', () => keyboard.onKeyup())
 
-function onKeydown(e) {
-  pressedKeys[e.keyCode] = true
+// function onKeydown(e) {
+//   keyboard.pressedKeys[e.keyCode] = true
 
-  if (actions[e.keyCode] && !triggeredKeys[e.keyCode]) {
-    actions[e.keyCode]()
-  }
+//   if (keyboard.actions[e.keyCode] && !keyboard.triggeredKeys[e.keyCode]) {
+//     keyboard.actions[e.keyCode]()
+//   }
 
-  triggeredKeys[e.keyCode] = true
-}
+//   keyboard.triggeredKeys[e.keyCode] = true
+// }
 
-function onKeyup(e) {
-  pressedKeys[e.keyCode] = false
-  triggeredKeys[e.keyCode] = false
-}
-
+// function onKeyup(e) {
+//   keyboard.pressedKeys[e.keyCode] = false
+//   keyboard.triggeredKeys[e.keyCode] = false
+// }
