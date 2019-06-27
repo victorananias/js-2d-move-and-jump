@@ -101,6 +101,14 @@ window.onload = () => {
 
     const jumping = adventurer.jumping;
 
+    if (jumping && currentDirection == DIRECTION_RIGHT) {
+      currentRow = 4
+    }
+
+    if (jumping && currentDirection == DIRECTION_LEFT) {
+      currentRow = 5
+    }
+
     if (keyboard.triggeredKeys[ARROW_RIGHT]) {
       return keyboard.actions[ARROW_RIGHT]()
     }
@@ -115,14 +123,6 @@ window.onload = () => {
 
     if (!jumping && currentDirection == DIRECTION_LEFT) {
       currentRow = 1
-    }
-
-    if (jumping && currentDirection == DIRECTION_RIGHT) {
-      currentRow = 4
-    }
-
-    if (jumping && currentDirection == DIRECTION_LEFT) {
-      currentRow = 5
     }
   }
 
@@ -195,8 +195,8 @@ window.onload = () => {
   }
 }
 
-document.addEventListener('keydown', () => keyboard.onKeydown())
-document.addEventListener('keyup', () => keyboard.onKeyup())
+document.addEventListener('keydown', (e) => keyboard.onKeydown(e.keyCode))
+document.addEventListener('keyup', (e) => keyboard.onKeyup(e.keyCode))
 
 // function onKeydown(e) {
 //   keyboard.pressedKeys[e.keyCode] = true
