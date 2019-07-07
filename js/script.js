@@ -195,20 +195,5 @@ window.onload = () => {
   }
 }
 
-document.addEventListener('keydown', () => keyboard.onKeydown())
-document.addEventListener('keyup', () => keyboard.onKeyup())
-
-// function onKeydown(e) {
-//   keyboard.pressedKeys[e.keyCode] = true
-
-//   if (keyboard.actions[e.keyCode] && !keyboard.triggeredKeys[e.keyCode]) {
-//     keyboard.actions[e.keyCode]()
-//   }
-
-//   keyboard.triggeredKeys[e.keyCode] = true
-// }
-
-// function onKeyup(e) {
-//   keyboard.pressedKeys[e.keyCode] = false
-//   keyboard.triggeredKeys[e.keyCode] = false
-// }
+document.addEventListener('keydown', e => keyboard.onKeydown(e.keyCode))
+document.addEventListener('keyup', e => keyboard.onKeyup(e.keyCode))

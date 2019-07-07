@@ -14,7 +14,7 @@ class Keyboard {
   }
 
   onKeyup(key) {
-    pressedKeys[key] = false
-    triggeredKeys[key] = false
+    this.pressedKeys[key] = false
+    this.triggeredKeys[key] = false
   }
 }
