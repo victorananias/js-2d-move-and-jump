@@ -17,8 +17,8 @@ const sprites = [
   { frames: 4, interval: 120 },
   { frames: 6, interval: 60 },
   { frames: 6, interval: 60 },
-  { frames: 3, interval: 120 },
-  { frames: 3, interval: 120 }
+  { frames: 2, interval: 200 },
+  { frames: 2, interval: 200 }
 ]
 
 const imgRowsCount = sprites.length
@@ -96,9 +96,11 @@ window.onload = () => {
     adventurer.positionY += adventurer.velocityY
     adventurer.velocityY *= 0.9 // friction
 
-    if (adventurer.positionY > canvas.height - spriteHeight - floorHeight) {
+    const maxJump = canvas.height - spriteHeight - floorHeight
+
+    if (adventurer.positionY > maxJump) {
       adventurer.jumping = false
-      adventurer.positionY = canvas.height - spriteHeight - floorHeight
+      adventurer.positionY = maxJump
     }
 
     const jumping = adventurer.jumping;
